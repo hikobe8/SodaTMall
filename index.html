@@ -84,9 +84,9 @@
             font-size: 16px;
         }
         div.categoryWithCarousel div.rightMenu span{
-            margin: 0 20px;
+            margin: 0 20px 0 20px;
         }
-        div.categoryWithCarousel div.rightMenu span img{
+        div.categoryWithCarousel div.rightMenu img{
             height:30px;
         }
         div.carousel-of-product{
@@ -181,7 +181,28 @@
         img.cateye{
             margin-left: 20px;
         }
+        img.catear {
+            position: absolute;
+            height: 15px;
+            display: none;
+        }
     </style>
+    <script>
+        $(function () {
+            $("div.rightMenu span").mouseenter(function () {
+                var left = $(this).position().left;
+                var top = $(this).position().top;
+                var width = $(this).css("width");
+                var destLeft = parseInt(left) + parseInt(width)/2;
+                $("img#catear").css("left", destLeft);
+                $("img#catear").css("top", parseInt(top) - 20);
+                $("img#catear").fadeIn(500);
+            });
+            $("div.rightMenu span").mouseleave(function () {
+               $("img#catear").hide();
+            });
+        });
+    </script>
 </head>
 <body>
 <!--search-->
@@ -208,6 +229,7 @@
                 <span class="glyphicon glyphicon-th-list" style="margin-left: 10px"></span>
                 <span>商品分类</span>
             </div>
+            <img class="catear" id="catear" src="http://how2j.cn/tmall/img/site/catear.png" style="left: 260.5px; top: 159.65px; display: none">
             <div class="rightMenu">
                 <span><a href="#"><img src="http://how2j.cn/tmall/img/site/chaoshi.png"></a></span>
                 <span><a href="#"><img src="http://how2j.cn/tmall/img/site/guoji.png"></a></span>
