@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html charset="UTF-8">
+
 <head>
+    <style>
+        .title {
+            color: blue
+        }
+
+        .info {
+            color: red
+        }
+    </style>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <title>HTML 基础</title>
 </head>
+
 <body>
+    <h1 class="title">标题 h1~h6</h1>
+
     <h1>h1标题</h1>
     <h2>h2标题</h2>
     <h3>h3标题</h3>
@@ -12,8 +25,68 @@
     <h5>h5标题</h5>
     <h6>h6标题</h6>
 
+    <h1 class="title">属性 align 对齐方式</h1>
     <h1>未设置居中的标题</h1>
+
     <h1 align="center">居中的标题</h1>
 
+    <h1 class="title">段落</h1>
+    <p>第一段</p>
+    <p>第二段</p>
+    <p>第三段</p>
+
+    <h1 class="title">文字加粗</h1>
+    <b>文字加粗 b 标签</b> <br />
+    <strong>文字加粗，strong 标签</strong> <br />
+    <p class="info">区别：<br />
+        b是bold的缩写，仅仅表示该文本是粗体的，并不暗示这段文字的重要性<br />
+        strong虽然也是粗体，但是更多的是强调语义上的加重，提醒用户该文本的重要性。 在SEO（搜索引擎优化）的时候，也更加容易帮助用户找到重点的内容
+        推荐使用strong</p>
+    <h1 class="title">斜体</h1>
+    不使用斜体 <br />
+    <i>i标签实现斜体</i> <br />
+    <em>em标签实现斜体</em> <br />
+    <p class="info">区别：<br />
+        i是italic的缩写，仅仅表示该文本是斜体的，并不暗示这段文字的重要性<br />
+        em 是 Emphasized的缩写，虽然也是斜体，但是更多的是强调语义上的加重，提醒用户该文本的重要性。 常常用于引入新的术语的时候使用。
+    </p>
+    <h1 class="title">同时实现斜体粗体</h1>
+    <strong><i>strong i</i></strong> <br/>
+    <i><strong>i strong</strong></i> <br/>
+
+    <h1 class="title">pre 预格式</h1>
+    不使用pre标签<br/>
+    int main()
+    {
+        return 0;
+    }<br/>
+    使用pre标签<br/>
+    <pre>
+    int main()
+    {
+        return 0;
+    }
+    </pre>
+
+    <h1 class="title">文字删除效果</h1>
+    <p>无删除效果</p>
+    <del>del标签删除效果</del><br/>
+    <s>s标签删除效果, 很多浏览器不支持，不建议使用</s>
+
+    <h1 class="title">下划线效果</h1>
+    <ins>ins标签实现下划线</ins><br/>
+    <u>s标签实现下划线，不建议使用</u>
+
+    <h1 class="title">显示图片</h1>
+    <img src="demo.gif" alt="图片正常加载不会显示"/>
+    <img src="test.jpg" alt="图片加载失败显示alt"/>
+    <p class="info">
+        如果图片不存在，默认会显示一个缺失图片，这是不友好的 
+        所以可以加上alt属性。 <br/>
+        当图片存在的时候，alt是不会显示的 <br/>
+        当图片不存在的时候，alt就会出现
+    </p>
+
 </body>
+
 </html>
