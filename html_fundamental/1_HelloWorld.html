@@ -51,16 +51,16 @@
         em 是 Emphasized的缩写，虽然也是斜体，但是更多的是强调语义上的加重，提醒用户该文本的重要性。 常常用于引入新的术语的时候使用。
     </p>
     <h1 class="title">同时实现斜体粗体</h1>
-    <strong><i>strong i</i></strong> <br/>
-    <i><strong>i strong</strong></i> <br/>
+    <strong><i>strong i</i></strong> <br />
+    <i><strong>i strong</strong></i> <br />
 
     <h1 class="title">pre 预格式</h1>
-    不使用pre标签<br/>
+    不使用pre标签<br />
     int main()
     {
-        return 0;
-    }<br/>
-    使用pre标签<br/>
+    return 0;
+    }<br />
+    使用pre标签<br />
     <pre>
     int main()
     {
@@ -70,22 +70,189 @@
 
     <h1 class="title">文字删除效果</h1>
     <p>无删除效果</p>
-    <del>del标签删除效果</del><br/>
+    <del>del标签删除效果</del><br />
     <s>s标签删除效果, 很多浏览器不支持，不建议使用</s>
 
     <h1 class="title">下划线效果</h1>
-    <ins>ins标签实现下划线</ins><br/>
+    <ins>ins标签实现下划线</ins><br />
     <u>s标签实现下划线，不建议使用</u>
 
     <h1 class="title">显示图片</h1>
-    <img src="demo.gif" alt="图片正常加载不会显示"/>
-    <img src="test.jpg" alt="图片加载失败显示alt"/>
+    <img src="demo.gif" alt="图片正常加载不会显示" />
+    <img src="test.jpg" alt="图片加载失败显示alt" />
     <p class="info">
-        如果图片不存在，默认会显示一个缺失图片，这是不友好的 
-        所以可以加上alt属性。 <br/>
-        当图片存在的时候，alt是不会显示的 <br/>
+        如果图片不存在，默认会显示一个缺失图片，这是不友好的
+        所以可以加上alt属性。 <br />
+        当图片存在的时候，alt是不会显示的 <br />
         当图片不存在的时候，alt就会出现
     </p>
+
+    <h1 class="title">超链接</h1>
+    <a href="https://github.com" target="_blank" title="跳转到https://github.com">github</a>
+
+    <h1 class="title">表格</h1>
+    1默认表格<br />
+    <table>
+        <tr>
+            <td>Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    2带边框的表格<br />
+    <table border="1">
+        <tr>
+            <td>Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    3设置表宽度<br />
+    <table border="1" width="200px">
+        <tr>
+            <td>Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    4设置单元格宽度<br />
+    <table border="1" width="200px">
+        <tr>
+            <td>Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td width="50px">James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    5设置单元格百分比<br />
+    <table border="1" width="200px">
+        <tr>
+            <td>Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td width="80%">James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    6单元格水平对齐<br />
+    <table border="1" width="200px">
+        <tr>
+            <td align="left">Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td align="center">James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td align="right">Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+
+    7单元格垂直对齐<br />
+    <table border="1" width="200px">
+        <tr>
+            <td valign="top">Kobe</td>
+            <td>24 <br /> 8</td>
+        </tr>
+        <tr>
+            <td valign="center">James</td>
+            <td>6 <br /> 23</td>
+        </tr>
+        <tr>
+            <td valign="bottom">Davis</td>
+            <td>23 <br> 23</td>
+        </tr>
+    </table>
+
+    8合并列
+    <table border="1" width="200px">
+        <tr>
+            <td colspan="2">Kobe 24</td>
+        </tr>
+        <tr>
+            <td>James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    9合并行
+    <table border="1" width="200px">
+        <tr>
+            <td rowspan="2">Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>James</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+    10设置行，单元格颜色
+    <table border="1" width="200px">
+        <tr bgcolor="gray">
+            <td>Kobe</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>James</td>
+            <td bgcolor="yellow">6</td>
+        </tr>
+        <tr>
+            <td>Davis</td>
+            <td>23</td>
+        </tr>
+    </table>
 
 </body>
 
