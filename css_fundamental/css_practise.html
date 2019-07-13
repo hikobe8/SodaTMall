@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 基础</title>
+    <style>
+        /* 设置所有的p标签内容为红色 */
+        p {
+            color: blue
+        }
+
+        .p {
+            color: blue
+        }
+
+        #p {
+            color: yellow
+        }
+
+        p.green {
+            color: green
+        }
+
+        p.width_half {
+            width: 50%;
+            background: black;
+            color: blue
+        }
+
+        p.width_180px {
+            width: 180px;
+            background: red;
+            color: blue
+        }
+
+        h2.red {
+            background-color: rgb(255, 128, 128)
+        }
+
+        h2.transparent {
+            background-color: transparent
+        }
+
+        h2.image_bg {
+            background-image: url("background_small.jpg");
+            background-repeat: no-repeat;
+            height: 100px;
+        }
+
+        h2.image_bg_repeat {
+            background-image: url("background_small.jpg");
+            background-repeat: repeat-x;
+            height: 100px;
+        }
+
+        h2.image_bg_contain {
+            background-image: url("background_small.jpg");
+            background-size: contain;
+            height: 100px;
+        }
+
+        h3.bluetext {
+            color: blue
+        }
+
+        div.border {
+            border: 1px black solid
+        }
+
+        div.left {
+            text-align: left
+        }
+
+        div.center {
+            text-align: center
+        }
+
+        div.right {
+            text-align: right
+        }
+
+        h3.up_line {
+            text-decoration: overline
+        }
+
+        h3.through_line {
+            text-decoration: line-through
+        }
+
+        h3.under_line {
+            text-decoration: underline
+        }
+
+        h3.double_line_height {
+            width: 120px;
+            line-height: 200%
+        }
+
+        h3.word_space_20px {
+            word-spacing: 20px
+        }
+
+        h3.letter_space_20px {
+            letter-spacing: 20px
+        }
+
+        h3.intent_40px {
+            text-indent: 40px
+        }
+
+        span.font30px {
+            font-size: 30px
+        }
+
+        span.font_half {
+            font-size: 50%
+        }
+
+        span.font_half_em {
+            font-size: 0.5em
+        }
+
+        span.roman {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 20px;
+            font-family: 'Times New Roman'
+        }
+        div.triangle{
+            border-top-style: solid;
+            border-top-color: red;
+            border-top-width: 20px;
+            border-left-style: solid;
+            border-left-color: transparent;
+            border-left-width: 20px;
+            border-right-style: solid;
+            border-right-color: transparent;
+            border-right-width: 20px;
+            width: 0px
+        }
+        td.underline{
+            text-align: center;
+            border-bottom-style: solid;
+            border-bottom-color: blue;
+            border-bottom-width: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>元素选择器</p>
+    <p class="p">类选择器</p>
+    <p id="p">ID选择器</p>
+    <p class="green">p.green 元素类组合选择器</p>
+    <p><span>p -> span</span></p>
+    <p class="width_half">一半宽度</p>
+    <p class="width_180px">宽度为180px</p>
+
+    <h2 class="red">红色背景</h2>
+    <h2 class="transparent">透明背景</h2>
+    <h2 class="image_bg">小图背景</h2>
+    <h2 class="image_bg_repeat">小图背景 repeat-x</h2>
+    <h2 class="image_bg_contain">小图背景 contain, 背景平铺，通过拉伸实现，会有失真</h2>
+    <h3 class="bluetext">蓝色文字</h3>
+    <div class="border left">div左对齐</div>
+    <div class="border center">div居中对齐</div>
+    <div class="border right">div右对齐</div>
+    <h3 class="up_line">上划线</h3>
+    <h3 class="through_line">删除线</h3>
+    <h3 class="under_line">下划线</h3>
+    <h3 class="double_line_height">200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距
+        200%行间距</h3>
+
+    <h3 class="letter_space_20px">abcdefg</h3>
+    <h3 class="word_space_20px">Kobe James Davis</h3>
+    <h3 class="intent_40px">asdfasdfadsfasdfasdfsadfasdfasdfasdfsadfadsfdasf</h3>
+    <span class="font30px">30像素大小的文字</span> <br />
+    <span class="font_half">一半默认大小的文字</span><br />
+    <span class="font_half_em">一半默认大小的文字</span><br />
+    <span class="roman">字体为Times New Roman的20px大小的粗体斜体文字</span>
+
+    <table style="table-layout: auto;border-collapse: collapse; width: 200px" border="1">
+        <tr>
+            <td width="10%">asdfasdfsasdfsafasdfsaa123dcdasfasd123edasfd</td>
+            <td width="90%">asdfasdfs</td>
+        </tr>
+    </table>
+
+    <table style="table-layout: fixed;border-collapse: separate; width: 200px" border="1">
+        <tr>
+            <td width="10%">asdfasdfsasdfsafasdfsaa123dcdasfasd</td>
+            <td width="90%">asdfasdfs</td>
+        </tr>
+    </table>
+    倒三角
+    <div class="triangle"></div>
+    下划线断线
+    <table style="border-collapse: separate; width: 100%" >
+        <tr>
+            <td class="underline">商品</td>
+            <td class="underline">数量</td>
+            <td class="underline">价格</td>
+            <td class="underline">小记</td>
+        </tr>
+    </table>
+</body>
+
+</html>
