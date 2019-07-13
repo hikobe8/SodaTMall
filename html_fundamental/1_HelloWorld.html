@@ -351,6 +351,54 @@
         </tr>
     </table>
 
+    <h1 class="title">form 表单</h1>
+    文本框<input name="name" type="text" placeholder="请输入文本"/> <br/>
+    密码框<input name="pwd" type="password"> <br/>
+
+    <h2>注册</h2>
+    <form style="background: blueviolet;width: 50%">
+        用户名 <input name="name" type="text" placeholder="请输入用户名"/> <br/>
+        密&nbsp&nbsp&nbsp码 <input name="name" type="text" placeholder="请输入密码"/> <br/>
+        男<input type="radio" name="sex" checked="checked"/> 女<input type="radio" name="sex"/> 保密<input type="radio" name="sex"/><br/>
+        爱好<br/>
+        篮球 <input type="checkbox" name="basketball"/><br/>
+        足球 <input type="checkbox" name="football"/><br/>
+        游泳 <input type="checkbox" name="swim"/><br/>
+        出生年份
+        <select>
+            <option>2000</option>
+            <option>2001</option>
+            <option selected="selected">2002</option>
+            <option>2003</option>
+            <option>2004</option>
+        </select>
+        出生月份
+        <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option selected="selected">6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+        </select>   <br/>
+        个人简介
+        <br/>
+        <textarea cols="30" rows="8">
+
+        </textarea>
+        <br/>
+        <input type="button" value="button的input标签不具备提交表单功能"/>
+        <br/>
+        <input type="reset" value="重置">
+        <input type="submit" value="注册"/>
+    </form>
+
 </body>
 
 </html>
