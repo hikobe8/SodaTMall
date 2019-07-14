@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 布局</title>
+    <style>
+        div.abs {
+            position: absolute;
+            left: 200px;
+            top: 50px;
+        }
+
+        p.abv {
+            position: absolute;
+            left: 200px;
+            top: 50px;
+            width: 215px;
+            border: 1px solid blue;
+        }
+        div.absimg{
+            position: absolute;
+            top: 300px;
+            /* 越大显示优先级越高 */
+            z-index: -1; 
+        }
+        h1{
+            color: red
+        }
+        div.relative{
+            position: relative;
+            left: 100px;
+            top: 10px
+        }
+        div.relative_no_place{
+            position: relative;
+            left: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>绝对定位</h1>
+    <div>第1个div</div>
+    <div>第2个div</div>
+    <div>第3个div</div>
+    <div class="abs">第4个div
+        <p class="abv">相对于div的绝对位置布局</p>
+    </div>
+    <div>第5个div</div>
+    <h1>z-index</h1>
+    <div>
+    <div>第1个div</div>
+    <div>第2个div</div>
+    <div>第3个div</div>
+    <div class="absimg">
+       <img src="background_small.jpg"/>
+    </div>
+    <div>第5个div</div>
+    </div>
+    <h1>相对定位</h1>
+    <div>第1个div</div>
+    <div>第2个div</div>
+    <div>第3个div</div>
+    <div class="relative">第4个div</div>
+    <div>第5个div</div>
+    向右移动并且不占位置
+    <div>第1个div</div>
+    <div>第2个div</div>
+    <div>第3个div</div>
+    <div style="position: absolute;"><div style="position: relative; left:150px">第四个div(不占坑)</div></div>
+    <div>第5个div</div>
+    <div>第6个div</div>
+</body>
+
+</html>

@@ -145,6 +145,46 @@
             border-bottom-color: blue;
             border-bottom-width: 4px;
         }
+        span#padding{
+            border: 1px solid blue;
+            padding: 20px
+        }
+        span#padding2{
+            border: 1px solid blue;
+            padding: 20px 30px 40px 50px
+        }
+        div#margin{
+            border: solid 2px red;
+            margin: 20px
+        }
+        span#margin{
+            border: solid 2px red;
+            margin: 20px
+        }
+        div a{
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: gray;
+        }
+        div a:hover{
+            background-color: whitesmoke
+        }
+    
+        div.display_none{
+            /* 使用display:none; 隐藏一个元素，这个元素将不再占有原空间 “坑” 让出来了 */
+            display: none
+        }
+        div.invisible {
+            /* 使用 visibility:hidden;隐藏一个元素，这个元素继续占有原空间，只是“看不见” */
+            visibility: hidden 
+        }
+        .green{
+            color: green
+        }
+        .green_important{
+            color: green !important
+        }
     </style>
 </head>
 
@@ -212,7 +252,29 @@
             <td class="underline">价格</td>
             <td class="underline">小记</td>
         </tr>
-    </table>
+    </table> <br/>
+
+    <span id="padding">padding为20px</span>
+    <br/>
+    <span id="padding2">padding为20px, 30px 40px, 50px, 上 右 下 左,依顺时针的方向依次赋值</span>
+    <br/>
+    <div id="margin">div margin:20px</div>
+    <span id="margin">span margin:20px,span内联元素不能看到上下外边距的效果</span>
+
+    <div style="border: 1px solid black; width: 100px">
+        <div><a href=""> Kobe</a></div>
+        <div><a href=""> James</a></div>
+        <div><a href=""> Jordan</a></div>
+        <div><a href=""> Davis</a></div>
+    </div>
+
+    <div class="display_none">看不见的元素, 不占用空间</div>
+    <div class="invisible">看不见的元素, 占用空间</div>
+
+    <span class="green" style="color: red">优先使用style属性的颜色，红色</span>
+    <span class="green_important" style="color: red">优先使用!important的颜色，css里面的绿色</span>
+
+    <h1 style="color: red">CSS定位</h1>
 </body>
 
 </html>
