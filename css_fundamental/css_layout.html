@@ -17,24 +17,134 @@
             width: 215px;
             border: 1px solid blue;
         }
-        div.absimg{
+
+        div.absimg {
             position: absolute;
             top: 300px;
             /* 越大显示优先级越高 */
-            z-index: -1; 
+            z-index: -1;
         }
-        h1{
+
+        h1 {
             color: red
         }
-        div.relative{
+
+        div.relative {
             position: relative;
             left: 100px;
             top: 10px
         }
-        div.relative_no_place{
+
+        div.relative_no_place {
             position: relative;
             left: 150px;
         }
+
+        .rfloat {
+            float: right;
+        }
+
+        .lfloat {
+            float: left;
+        }
+
+        div.floatdiv {
+            float: left;
+        }
+
+        .border {
+            border: 1px solid black;
+            margin-bottom: 10px
+        }
+
+        .block {
+            display: block;
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .onelineblock {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px
+        }
+
+        .center_children {
+            text-align: center
+        }
+
+        .center_in_layout {
+            width: 200px;
+            margin: 10px auto
+        }
+
+        .left_fixed {
+            float: left;
+            width: 200px;
+            background-color: pink
+        }
+
+        .right_match {
+            overflow: hidden;
+            background-color: skyblue
+        }
+
+        .single_line_center_vertical {
+            line-height: 100px
+        }
+
+        .padding_center_vertical {
+            padding-top: 30px;
+            padding-bottom: 30px
+        }
+
+        .img_center_vertical {
+            display: table-cell;
+            vertical-align: middle;
+            height: 600px
+        }
+        .left_fixed_200px{
+            float: left;
+            width: 200px;
+            background-color: skyblue
+        }
+        .right_fixed_200px{
+            float: right;
+            width: 200px;
+            background-color: red
+        }
+        .center_auto{
+            margin: 0px 200px;
+            background-color: yellow
+        }
+
+        .div_content_blue{
+            width: 600px;
+            height: 400px;
+            background-color: skyblue;
+            position: relative;
+        }
+
+        .div_content_footer{
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            text-align: center;
+            line-height: 40px;
+            background: red
+        }
+
+
+        .span_bottom_border{
+            border-bottom: 1px solid blueviolet
+        }
+
+        .span_float_clear_white_space{
+            float: left
+        }
+
     </style>
 </head>
 
@@ -49,13 +159,13 @@
     <div>第5个div</div>
     <h1>z-index</h1>
     <div>
-    <div>第1个div</div>
-    <div>第2个div</div>
-    <div>第3个div</div>
-    <div class="absimg">
-       <img src="background_small.jpg"/>
-    </div>
-    <div>第5个div</div>
+        <div>第1个div</div>
+        <div>第2个div</div>
+        <div>第3个div</div>
+        <div class="absimg">
+            <img src="background_small.jpg" />
+        </div>
+        <div>第5个div</div>
     </div>
     <h1>相对定位</h1>
     <div>第1个div</div>
@@ -67,9 +177,111 @@
     <div>第1个div</div>
     <div>第2个div</div>
     <div>第3个div</div>
-    <div style="position: absolute;"><div style="position: relative; left:150px">第四个div(不占坑)</div></div>
+    <div style="position: absolute;">
+        <div style="position: relative; left:150px">第四个div(不占坑)</div>
+    </div>
     <div>第5个div</div>
     <div>第6个div</div>
+    <h1>浮动</h1>
+    <div>正常的文字</div>
+    <div>正常的文字</div>
+    <div>正常的文字</div>
+    <div class="rfloat">向右浮动的文字</div>
+    <div>正常的文字</div>
+
+    <div>正常的文字</div>
+    <div>正常的文字</div>
+    <div>正常的文字</div>
+    <div class="lfloat">向左浮动的文字</div>
+    <div>正常的文字</div>
+
+
+    <img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=27a6723e4c2309f7e76faa144a356bce/9e3df8dcd100baa1a5fd20114d10b912c9fc2e42.jpg"
+        alt="kobe" />
+    <div>这是洛杉矶湖人队科比布莱恩特的简介，不会围绕图片</div>
+
+
+    <div style="width: 400px">
+        <img class="lfloat"
+            src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=27a6723e4c2309f7e76faa144a356bce/9e3df8dcd100baa1a5fd20114d10b912c9fc2e42.jpg"
+            alt="kobe" />
+        <div style="color: red"> 这是洛杉矶湖人队科比布莱恩特的简介，围绕图片
+            这是洛杉矶湖人队科比布莱恩特的简介，围绕图片
+            这是洛杉矶湖人队科比布莱恩特的简介，围绕图片
+            这是洛杉矶湖人队科比布莱恩特的简介，围绕图片
+            这是洛杉矶湖人队科比布莱恩特的简介，围绕图片
+            这是洛杉矶湖人队科比布莱恩特的简介，围绕图片
+            这是洛杉矶湖人队科比布莱恩特的简介，围绕图片</div>
+    </div>
+
+    <h2>水平排列的div</h2>
+    <div style="width: 200px">
+        <div class="floatdiv">水平div1</div>
+        <div class="floatdiv">水平div2</div>
+        <div class="floatdiv">水平div3</div>
+        <div class="floatdiv">水平div4</div>
+        <div class="floatdiv">水平div5</div>
+    </div>
+
+    <h1 style="clear: left">显示方式</h1>
+    <div>普通div</div>
+    <span class="border block">改造为块级元素的span</span>
+
+    <span>普通span</span>
+    <div class="border inline">改造为内联元素的div</div>
+    <div>
+        <div>内联-块级显示</div>
+        <div class="border onelineblock">Kobe</div>
+        <div class="border onelineblock">James</div>
+        <div class="border onelineblock">Jordan</div>
+        <div class="border onelineblock">Davis</div>
+    </div>
+    <div class="border" align="center">使用align="center"实现元素居中</div>
+    <div class="border center_children">使用text_align="center"实现元素居中</div>
+    <span class="border center_children">span为内联元素, 无法使用text_align="center"实现元素居中</span>
+    <div class="border center_in_layout"><span>margin:10px auto 实现div的span元素居中</span></div>
+
+    <div class="left_fixed">左侧固定</div>
+    <div class="right_match">右侧撑满</div>
+
+    <h1>垂直居中</h1>
+    <div class="border single_line_center_vertical">单行文字居中</div>
+    <div class="border padding_center_vertical">多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容
+        多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容 多行内容
+        多行内容 多行内容 多行内容 多行内容</div>
+
+    <div class="border img_center_vertical">
+        <div>table居中</div>
+        <img
+            src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=27a6723e4c2309f7e76faa144a356bce/9e3df8dcd100baa1a5fd20114d10b912c9fc2e42.jpg" />
+    </div>
+
+    <h1>左右固定，中间自适应</h1>
+
+    <div class="left_fixed_200px">左边固定200px</div>
+    <div class="right_fixed_200px">右边固定200px</div>
+    <div class="center_auto">中间自适应</div>
+
+    <h1>始终贴在下方，结合相对位置绝对位置实现</h1>
+
+    <div class="div_content_blue">
+        <div class="div_content_footer">始终位于底部的footer</div>
+    </div>
+
+    <span class="span_bottom_border">有换行的span</span>
+    <span class="span_bottom_border">有换行的span</span>
+    <span class="span_bottom_border">有换行的span</span>
+    <span class="span_bottom_border">有换行的span</span>
+
+    <div>解决上面换行的span的空格 使用float</div>
+    <span class="span_float_clear_white_space span_bottom_border">没有换行的span</span>
+    <span class="span_float_clear_white_space span_bottom_border">没有换行的span</span>
+    <span class="span_float_clear_white_space span_bottom_border">没有换行的span</span>
+    <span class="span_float_clear_white_space span_bottom_border">没有换行的span</span>
+    <div style="clear: both"></div>
+    <span>哈哈哈哈哈哈</span>
+    
+
 </body>
 
 </html>
