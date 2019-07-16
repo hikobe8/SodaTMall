@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>JavaScript 基础</title>
     <script>
         console.log("Hello JavaScript");
-        
+        var a = 10
+
+        document.write('a.toString()=' + a.toString() + '<br/>');
+        document.write('a.toString(2)=' + a.toString(2) + '<br/>');
+        document.write('a.toString(8)=' + a.toString(8) + '<br/>');
+        document.write('a.toString(16)=' + a.toString(16) + '<br/>');
+        document.write('2 + 3 = ' + add(2, 3));
+        br();
+
+        // 输出换行符
+        function br() {
+            document.write('<br/>');
+        }
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        function addTwo() {
+            var a = parseInt(document.getElementById('num1').value);
+            var b = parseInt(document.getElementById('num2').value);
+            var op = document.getElementById("op").selectedIndex;
+            var result = a + b;
+            if (op == 1) {
+                result = a - b;
+            } else if (op == 2) {
+                result = a * b;
+            } else if (op == 3) {
+                result = a / b;
+            }
+
+            document.getElementById('result').value = result.toString();
+        }
+
     </script>
+    <style>
+
+    </style>
 </head>
+
 <body>
     <button onclick="document.getElementById('target').style.display = 'block'">显示下面的文字</button>
     <button onclick="document.getElementById('target').style.display = 'none'">隐藏下面的文字</button>
     <div id="target" style="background-color: red">显示的内容</div>
+    <div style="width:50%">
+        Number()和parseInt()一样，都可以用来进行数字的转换
+        区别在于，当转换的内容包含非数字的时候，Number() 会返回NaN(Not a Number)
+        parseInt() 要看情况，如果以数字开头，就会返回开头的合法数字部分，如果以非数字开头，则返回NaN
+    </div>
+
+    <h1>四则运算计算器</h1>
+    <input id="num1" type="number"> <select id="op">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+    </select> <input id="num2" type="number"> <button onclick="addTwo()">=</button> <input id="result" type="number"
+        disabled=true></span>
 </body>
+
 </html>
