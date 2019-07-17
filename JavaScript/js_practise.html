@@ -40,6 +40,89 @@
             document.getElementById('result').value = result.toString();
         }
 
+        function fun1(a) {
+            document.write(a + "是局部变量");
+        }
+
+        function fun2() {
+            a = 100;
+            document.write('修改全局变量a = 100');
+        }
+
+        function fun3() {
+            document.write("修改后的全局变量 a = " + a);
+        }
+
+        fun1(20);
+        br();
+        fun2();
+        br();
+        fun3();
+        br();
+
+        function compare1(a, b) {
+            var result = a == b;
+            document.write(a + ":" + typeof (a) + "==" + b + ":" + typeof (b) + "->" + result)
+        }
+
+        function compare2(a, b) {
+            var result = a === b;
+            document.write(a + ":" + typeof (a) + "===" + b + ":" + typeof (b) + "->" + result)
+        }
+
+        compare1(1, '1');
+        br();
+        compare2(1, '1');
+        br();
+
+        function getDayInWeek() {
+            var day = new Date().getDay();
+            var result = "";
+            switch (day) {
+                case 0:
+                    result = "星期天";
+                    break;
+                case 1:
+                    result = "星期一";
+                    break;
+                case 2:
+                    result = "星期二";
+                    break;
+                case 3:
+                    result = "星期三";
+                    break;
+                case 4:
+                    result = "星期四";
+                    break;
+                case 5:
+                    result = "星期五";
+                    break;
+                default:
+                    result = "星期六";
+                    break;
+            }
+            return result;
+        }
+
+        document.write(getDayInWeek());
+        br();
+
+        try {
+            fun100();
+        } catch (err) {
+            document.write(err.message);
+        }
+        br();
+
+        function calcMoney(){
+            var money = parseInt(document.getElementById("money").value)
+            var year = parseInt(document.getElementById("year").value)
+            var rate = parseFloat(document.getElementById("rate").value) / 100.0;
+            
+            var result = money * Math.pow((1 + rate), year);
+            document.getElementById('total').value = result;
+        }
+
     </script>
     <style>
 
@@ -64,6 +147,40 @@
         <option>/</option>
     </select> <input id="num2" type="number"> <button onclick="addTwo()">=</button> <input id="result" type="number"
         disabled=true></span>
+    <h1>复利计算器</h1>
+    <table style="width: 50%; border-collapse: collapse" border="1">
+        <tr>
+            <td style="width: 30%">起始资金</td>
+            <td><input id="money" type="number"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%">每年收益</td>
+            <td><input id="rate" type="number"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%">复利年数</td>
+            <td><input id="year" type="number"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%">每年追加资金</td>
+            <td><input id="add_money" type="number"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="calcMoney()">计算</button></td>
+        </tr>
+        <!-- <tr>
+            <td style="width: 30%">起始资金</td>
+            <td><input id="money" type="number"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%">起始资金</td>
+            <td><input id="money" type="number"></td>>
+        </tr> -->
+        <tr>
+            <td style="width: 30%">本息和</td>
+            <td><input id="total" type="number" disabled=true></td>
+        </tr>
+    </table>
 </body>
 
 </html>
