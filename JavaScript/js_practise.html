@@ -114,19 +114,42 @@
         }
         br();
 
-        function calcMoney(){
+        //计算利率
+        function calclixi(base, powder) {
+            if (1 == powder) {
+                return base;
+            }
+            if (0 == powder)
+                return 1;
+            var result = base;
+            for (var i = 0; i < powder - 1; i++) {
+                result = result * base;
+            }
+            return result;
+        }
+
+        //计算复利率
+        function calcfuli(rate, year) {
+            var result = 0;
+            for (var i = year; i > 0; i--) {
+                result += calclixi(rate, i);
+            }
+            return result;
+        }
+
+        function calcMoney() {
             var money = parseInt(document.getElementById("money").value)
             var year = parseInt(document.getElementById("year").value)
             var rate = parseFloat(document.getElementById("rate").value) / 100.0;
-            
-            var result = money * Math.pow((1 + rate), year);
-            document.getElementById('total').value = result;
+            var add_money = parseFloat(document.getElementById("add_money").value);
+            var totalm = money + (add_money * (year - 1)); // 本金和
+            var total = add_money*calcfuli(1+rate, year - 1) + money*calclixi(1+rate, year); // 本息和
+            document.getElementById('totalm').value = totalm;
+            document.getElementById('totalx').value = total - totalm;
+            document.getElementById('total').value = total;
         }
 
     </script>
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -138,47 +161,50 @@
         区别在于，当转换的内容包含非数字的时候，Number() 会返回NaN(Not a Number)
         parseInt() 要看情况，如果以数字开头，就会返回开头的合法数字部分，如果以非数字开头，则返回NaN
     </div>
-
     <h1>四则运算计算器</h1>
-    <input id="num1" type="number"> <select id="op">
+    <input id="num1" type="number" />
+    <select id="op">
         <option>+</option>
         <option>-</option>
         <option>*</option>
         <option>/</option>
-    </select> <input id="num2" type="number"> <button onclick="addTwo()">=</button> <input id="result" type="number"
-        disabled=true></span>
+    </select>
+    <input id="num2" type="number">
+    <button onclick="addTwo()">=</button>
+    <input id="result" type="number" disabled=true />
     <h1>复利计算器</h1>
-    <table style="width: 50%; border-collapse: collapse" border="1">
+    <table style="border-collapse: collapse" border="1">
         <tr>
-            <td style="width: 30%">起始资金</td>
-            <td><input id="money" type="number"></td>
+            <td style="width: 40%">起始资金</td>
+            <td><input id="money" type="number">￥</td>
         </tr>
         <tr>
-            <td style="width: 30%">每年收益</td>
-            <td><input id="rate" type="number"></td>
+            <td>每年收益</td>
+            <td><input id="rate" type="number">%</td>
         </tr>
         <tr>
-            <td style="width: 30%">复利年数</td>
-            <td><input id="year" type="number"></td>
+            <td>复利年数</td>
+            <td><input id="year" type="number">￥</td>
         </tr>
         <tr>
-            <td style="width: 30%">每年追加资金</td>
-            <td><input id="add_money" type="number"></td>
+            <td>每年追加资金</td>
+            <td><input id="add_money" type="number">￥</td>
         </tr>
         <tr>
-            <td colspan="2"><button onclick="calcMoney()">计算</button></td>
-        </tr>
-        <!-- <tr>
-            <td style="width: 30%">起始资金</td>
-            <td><input id="money" type="number"></td>
+            <td colspan="2"><button onclick="calcMoney()" style="display: block;margin: 0 auto; width: 50%">计算</button>
+            </td>
         </tr>
         <tr>
-            <td style="width: 30%">起始资金</td>
-            <td><input id="money" type="number"></td>>
-        </tr> -->
+            <td>本金和</td>
+            <td><input id="totalm" type="number" disabled=true value="0">￥</td>
+        </tr>
         <tr>
-            <td style="width: 30%">本息和</td>
-            <td><input id="total" type="number" disabled=true></td>
+            <td>利息和</td>
+            <td><input id="totalx" type="number" disabled=true value="0">￥</td>
+        </tr>
+        <tr>
+            <td>本息和</td>
+            <td><input id="total" type="number" disabled=true value="0">￥</td>
         </tr>
     </table>
 </body>
