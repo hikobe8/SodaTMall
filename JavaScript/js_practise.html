@@ -149,6 +149,22 @@
             document.getElementById('total').value = total;
         }
 
+        function addTwoScience(){
+            var a = new Number(document.getElementById('nums_1').value);
+            var b = new Number(document.getElementById('nums_2').value);
+            var op = document.getElementById("op_s").selectedIndex;
+            var result = a + b;
+            if (op == 1) {
+                result = a - b;
+            } else if (op == 2) {
+                result = a * b;
+            } else if (op == 3) {
+                result = a / b;
+            }
+
+            document.getElementById('result_s').value = result.toExponential();
+        }
+
     </script>
 </head>
 
@@ -207,6 +223,19 @@
             <td><input id="total" type="number" disabled=true value="0">￥</td>
         </tr>
     </table>
+
+    <h1>四则运算计算器-科学计数法</h1>
+    <input id="nums_1" type="number" />
+    <select id="op_s">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+    </select>
+    <input id="nums_2" type="number">
+    <button onclick="addTwoScience()">=</button>
+    <input id="result_s" type="number" disabled=true />
+    
 </body>
 
 </html>
