@@ -143,13 +143,13 @@
             var rate = parseFloat(document.getElementById("rate").value) / 100.0;
             var add_money = parseFloat(document.getElementById("add_money").value);
             var totalm = money + (add_money * (year - 1)); // 本金和
-            var total = add_money*calcfuli(1+rate, year - 1) + money*calclixi(1+rate, year); // 本息和
+            var total = add_money * calcfuli(1 + rate, year - 1) + money * calclixi(1 + rate, year); // 本息和
             document.getElementById('totalm').value = totalm;
             document.getElementById('totalx').value = total - totalm;
             document.getElementById('total').value = total;
         }
 
-        function addTwoScience(){
+        function addTwoScience() {
             var a = new Number(document.getElementById('nums_1').value);
             var b = new Number(document.getElementById('nums_2').value);
             var op = document.getElementById("op_s").selectedIndex;
@@ -164,6 +164,21 @@
 
             document.getElementById('result_s').value = result.toExponential();
         }
+
+        var timeout = setTimeout(() => {
+            alert('3秒钟过去了');
+        }, 3000);
+
+        var timeout = setTimeout(() => {
+            clearInterval(interval);
+            alert('结束打印interval');
+        }, 5000);
+        
+        var interval = setInterval(() => {
+            console.log("--------------------------");
+        }, 1000);
+
+        
 
     </script>
 </head>
@@ -235,7 +250,7 @@
     <input id="nums_2" type="number">
     <button onclick="addTwoScience()">=</button>
     <input id="result_s" type="number" disabled=true />
-    
+
 </body>
 
 </html>
