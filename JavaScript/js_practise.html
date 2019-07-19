@@ -173,12 +173,20 @@
             clearInterval(interval);
             alert('结束打印interval');
         }, 5000);
-        
+
         var interval = setInterval(() => {
             console.log("--------------------------");
         }, 1000);
 
-        
+        function print(msg) {
+            document.write(msg);
+            document.write("<br/>");
+        }
+        function dom1() {
+            var d1 = document.getElementById("d1");
+            print("div 元素内容" + d1.childNodes[0].nodeValue);
+            print("div style内容" + d1.getAttribute("style"));
+        }
 
     </script>
 </head>
@@ -251,6 +259,7 @@
     <button onclick="addTwoScience()">=</button>
     <input id="result_s" type="number" disabled=true />
 
+    <div id="d1" style="background-color: red" onclick="dom1()">div node</div>
 </body>
 
 </html>
