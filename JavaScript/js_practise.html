@@ -188,6 +188,11 @@
             print("div style内容" + d1.getAttribute("style"));
         }
 
+        function changeBg(){
+            var d1 = document.getElementById("d1");
+            d1.setAttribute("style", "background-color: yellow");
+        }
+
     </script>
 </head>
 
@@ -260,6 +265,8 @@
     <input id="result_s" type="number" disabled=true />
 
     <div id="d1" style="background-color: red" onclick="dom1()">div node</div>
+    <button onclick="changeBg()">更改上面的背景色位黄色</button>
+
 </body>
 
 </html>
