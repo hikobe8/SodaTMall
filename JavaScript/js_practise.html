@@ -224,10 +224,14 @@
             document.getElementById("div_input").innerHTML = "输入框调用了onBlur()";
         }
 
+        function onBodyLoad(){
+            alert("body loaded!");
+        }
+
     </script>
 </head>
 
-<body>
+<body onload="onBodyLoad()">
     <button onclick="document.getElementById('target').style.display = 'block'">显示下面的文字</button>
     <button onclick="document.getElementById('target').style.display = 'none'">隐藏下面的文字</button>
     <div id="target" style="background-color: red">显示的内容</div>
