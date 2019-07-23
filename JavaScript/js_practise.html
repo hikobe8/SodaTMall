@@ -165,18 +165,18 @@
             document.getElementById('result_s').value = result.toExponential();
         }
 
-        var timeout = setTimeout(() => {
-            alert('3秒钟过去了');
-        }, 3000);
+        // var timeout = setTimeout(() => {
+        //     alert('3秒钟过去了');
+        // }, 3000);
 
-        var timeout = setTimeout(() => {
-            clearInterval(interval);
-            alert('结束打印interval');
-        }, 5000);
+        // var timeout = setTimeout(() => {
+        //     clearInterval(interval);
+        //     alert('结束打印interval');
+        // }, 5000);
 
-        var interval = setInterval(() => {
-            console.log("--------------------------");
-        }, 1000);
+        // var interval = setInterval(() => {
+        //     console.log("--------------------------");
+        // }, 1000);
 
         function print(msg) {
             document.write(msg);
@@ -216,16 +216,56 @@
             document.write("</table>");
         }
 
-        function focusInput(){
+        function focusInput() {
             document.getElementById("div_input").innerHTML = "输入框调用了onFocus()";
         }
 
-        function blurInput(){
+        function blurInput() {
             document.getElementById("div_input").innerHTML = "输入框调用了onBlur()";
         }
 
-        function onBodyLoad(){
+        function onBodyLoad() {
             alert("body loaded!");
+        }
+
+        function getDiv2() {
+            var d2 = document.getElementById('div2');
+            alert(d2.childNodes[0].nodeValue);
+        }
+
+        function getDiv2Pre() {
+            var d2 = document.getElementById('div2');
+            //html没有换行，可以直接获取
+            alert(d2.previousSibling.innerHTML);
+        }
+
+
+        function getDiv2Next() {
+            var d2 = document.getElementById('div2');
+            //html换行，换行符也要算为节点可以直接获取
+            alert(d2.nextSibling.nextSibling.innerHTML);
+        }
+
+        function getChildNodes() {
+            var d2 = document.getElementById('div2');
+            var content = d2.parentNode.childNodes.length + "个child nodes\n";
+            for (let i = 0; i < d2.parentNode.childNodes.length; i++) {
+                if(d2.parentNode.childNodes[i].nodeType == 3) {
+                    content += d2.parentNode.childNodes[i].nodeValue + "\n";
+                } else {
+                    content += d2.parentNode.childNodes[i] + "\n";
+                }  
+            }
+            alert(content);
+        }
+
+        function getChildren() {
+            var d2 = document.getElementById('div2');
+            var content = d2.parentNode.children.length + "个child nodes\n";
+            for (let i = 0; i < d2.parentNode.children.length; i++) {
+                content += d2.parentNode.children[i] + "\n";
+            }
+            alert(content);
         }
 
     </script>
@@ -305,10 +345,24 @@
     <button onclick="generateTable()">生成表格</button>
 
     <form>
-        输入框 <input id = "input_text" onfocus="focusInput()" onblur="blurInput()" type = "text" value = "输入框"/>
+        输入框 <input id="input_text" onfocus="focusInput()" onblur="blurInput()" type="text" value="输入框" />
         <div id="div_input"></div>
     </form>
 
+    <h1>childNodes 和 children的区别</h1>
+    <h2>childNodes 包含文字节点(<span style="color: red">HTML中的换行符也为空的文字节点</span>)，children不包含文字节点</h2>
+    <div style="background-color: blueviolet">
+    text content
+        <div>第1个div</div><div id="div2">第2个div</div>
+        <div>第3个div</div>
+        <div>
+            <button onclick="getDiv2()">获取第二个div</button>
+            <button onclick="getDiv2Pre()">获取前一个div</button>
+            <button onclick="getDiv2Next()">获取后一个div</button>
+            <button onclick="getChildNodes()">childNodes</button>
+            <button onclick="getChildren()">children</button>
+        </div>
+    </div>
 </body>
 
 </html>
