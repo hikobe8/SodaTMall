@@ -250,11 +250,11 @@
             var d2 = document.getElementById('div2');
             var content = d2.parentNode.childNodes.length + "个child nodes\n";
             for (let i = 0; i < d2.parentNode.childNodes.length; i++) {
-                if(d2.parentNode.childNodes[i].nodeType == 3) {
+                if (d2.parentNode.childNodes[i].nodeType == 3) {
                     content += d2.parentNode.childNodes[i].nodeValue + "\n";
                 } else {
                     content += d2.parentNode.childNodes[i] + "\n";
-                }  
+                }
             }
             alert(content);
         }
@@ -266,6 +266,29 @@
                 content += d2.parentNode.children[i] + "\n";
             }
             alert(content);
+        }
+
+        function generateTableByJS() {
+            var data = new Array(5);
+            data[0] = ['name', 'number', 'champion'];
+            data[1] = ['Jordan', '23', '6'];
+            data[2] = ['Kobe', '24', '5'];
+            data[3] = ['James', '24', '3'];
+            data[4] = ['Harden', '13', '0'];
+            var content = document.getElementById("table_js");
+            var table = document.createElement("table");
+            table.setAttribute("border", "1");
+            for (let i = 0; i < data.length; i++) {
+                var row = document.createElement("tr")
+                for (let j = 0; j < data[i].length; j++) {
+                    var cell = document.createElement("td");
+                    cell.appendChild(document.createTextNode(data[i][j]));
+                    cell.setAttribute("style", "text-align: centergit ");
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+            content.appendChild(table);
         }
 
     </script>
@@ -352,8 +375,9 @@
     <h1>childNodes 和 children的区别</h1>
     <h2>childNodes 包含文字节点(<span style="color: red">HTML中的换行符也为空的文字节点</span>)，children不包含文字节点</h2>
     <div style="background-color: blueviolet">
-    text content
-        <div>第1个div</div><div id="div2">第2个div</div>
+        text content
+        <div>第1个div</div>
+        <div id="div2">第2个div</div>
         <div>第3个div</div>
         <div>
             <button onclick="getDiv2()">获取第二个div</button>
@@ -363,6 +387,8 @@
             <button onclick="getChildren()">children</button>
         </div>
     </div>
+    <button onclick="generateTableByJS()">生成表格</button>
+    <div id="table_js"></div>
 </body>
 
 </html>
