@@ -291,6 +291,22 @@
             content.appendChild(table);
         }
 
+        function alertJson(){
+            var name = document.getElementById("i_name").value;
+            var select = document.getElementById("s_team");
+            var teamIndex= select.selectedIndex;
+            var team = select[teamIndex].value;
+            var number = document.getElementById("i_number").value;
+            var player = new Player(name, team, number);
+            alert(JSON.stringify(player));
+        }
+
+        function Player(name, team, number){
+            this.name = name;
+            this.team = team;
+            this.number = number;
+        }
+
     </script>
 </head>
 
@@ -389,6 +405,13 @@
     </div>
     <button onclick="generateTableByJS()">生成表格</button>
     <div id="table_js"></div>
+    <div>
+        姓名<input id="i_name" type="text"><br/>
+        球队<select id="s_team"><option value="洛杉矶湖人">洛杉矶湖人</option value="芝加哥公牛"><option>芝加哥公牛</option><option value="休斯顿火箭">休斯顿火箭</option></select>
+        <br/>
+        号码<input id="i_number" type="number"><br/>
+        <button onclick="alertJson()">生成json字符串</button>
+    </div>
 </body>
 
 </html>
