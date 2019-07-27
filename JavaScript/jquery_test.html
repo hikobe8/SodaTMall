@@ -21,14 +21,27 @@
                     }
                 }
             );
+            $('#git sbtn_bg').click(
+                function () {
+                    $('#div_bg').addClass('bg_red');
+                }
+            );
         });
 
     </script>
+    <style>
+        .bg_red {
+            background-color: red
+        }
+    </style>
 </head>
 
 <body>
     <button id="btn_hello">Hello World</button> <br />
     请输入内容<input id="input_text" /> <button id="btn_show">显示内容</button> <br />
+
+    <button id="btn_bg">增加背景色</button>
+    <div id="div_bg">This is a div</div>
 </body>
 
 </html>
