@@ -47,7 +47,24 @@
             );
             $('#btn_change_bg_font_color').click(
                 function () {
-                    $('#div_bg_css').css({'background-color':'darkblue','color':'red'});
+                    $('#div_bg_css').css({ 'background-color': 'darkblue', 'color': 'red' });
+                }
+            );
+
+            $("#toggle_input").click(
+                function () {
+                    $('#div_form input[type!=radio]').toggle(500);
+                }
+            );
+            $("#toggle_radio").click(
+                function () {
+                    $('#div_form input[type=radio]').toggle(500);
+                }
+            );
+
+            $('.changeAlign').click(
+                function () {
+                    $('#align_text').attr('align', $(this).val());
                 }
             );
         });
@@ -64,7 +81,6 @@
 
         .invisible {
             display: none;
-            font
         }
 
         .visible_block {
@@ -86,6 +102,20 @@
     <div id="div_bg">This is a div</div>
     <button id="btn_change_bg_font_color">更换背景色字体色</button>
     <div id="div_bg_css">使用css方法改变背景色和字体色</div>
+    <button id="toggle_input">切换所有input</button><br />
+    <button id="toggle_radio">切换所有radio</button><br />
+    <div id="div_form">
+        输入框1<input /><br />
+        输入框2<input /><br />
+        输入框3<input /><br />
+        输入框4<input /><br />
+        是否勾选<input type="radio">
+    </div>
+    <button value="left" class="changeAlign">居左对齐</button>
+    <button value="center" class="changeAlign">居中对齐</button>
+    <button value="right" class="changeAlign">居右对齐</button>
+    <h1 id="align_text">改变文字的对齐方式</h1>
+
 </body>
 
 </html>
