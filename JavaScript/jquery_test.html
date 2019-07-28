@@ -21,9 +21,33 @@
                     }
                 }
             );
-            $('#git sbtn_bg').click(
+            $('#btn_add_bg').click(
                 function () {
                     $('#div_bg').addClass('bg_red');
+                    $('#btn_toggle_bg').removeClass('invisible');
+                    $('#btn_toggle_bg').addClass('visible_inline');
+                }
+            );
+            $('#btn_remove_bg').click(
+                function () {
+                    $('#div_bg').removeClass('bg_red');
+                    $('#div_bg').removeClass('bg_yellow');
+                    $('#btn_toggle_bg').removeClass('visible_inline');
+                    $('#btn_toggle_bg').addClass('invisible');
+                }
+            );
+            $('#btn_toggle_bg').click(
+                function () {
+                    if ($('#div_bg').hasClass('bg_red')) {
+                        $('#div_bg').toggleClass('bg_yellow');
+                    } else {
+                        $('#div_bg').toggleClass('bg_red');
+                    }
+                }
+            );
+            $('#btn_change_bg_font_color').click(
+                function () {
+                    $('#div_bg_css').css({'background-color':'darkblue','color':'red'});
                 }
             );
         });
@@ -33,6 +57,23 @@
         .bg_red {
             background-color: red
         }
+
+        .bg_yellow {
+            background-color: yellow
+        }
+
+        .invisible {
+            display: none;
+            font
+        }
+
+        .visible_block {
+            display: block
+        }
+
+        .visible_inline {
+            display: inline
+        }
     </style>
 </head>
 
@@ -40,8 +81,11 @@
     <button id="btn_hello">Hello World</button> <br />
     请输入内容<input id="input_text" /> <button id="btn_show">显示内容</button> <br />
 
-    <button id="btn_bg">增加背景色</button>
+    <button id="btn_add_bg">增加背景色</button><button id="btn_remove_bg">删除背景色</button><button id="btn_toggle_bg"
+        class="invisible">更换背景色</button>
     <div id="div_bg">This is a div</div>
+    <button id="btn_change_bg_font_color">更换背景色字体色</button>
+    <div id="div_bg_css">使用css方法改变背景色和字体色</div>
 </body>
 
 </html>
