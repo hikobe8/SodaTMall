@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Jquery事件</title>
+    <script src="./jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $('#msg_1').html('页面加载成功');
+            $('#img_1').ready(function(){
+                $('#msg_2').html('图片加载成功');
+            });
+            $('#btn_clicks').click(
+                function(){
+                    $(this).html('单击了按钮');
+                }
+            );
+            $('#btn_clicks').dblclick(
+                function(){
+                    $(this).html('双击了按钮');
+                }
+            );
+            $('#input_key').keypress(
+                function(e){
+                    $('#div_key').html('key: ' + e.key + ' | keyCode : ' + e.keyCode + ' | which : ' + e.which);
+                }
+            );
+        });
+
+    </script>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div id="msg_1"></div>
+    <div id="msg_2"></div>
+    <img id="img_1" width="500px" src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike933%2C5%2C5%2C933%2C330/sign=c6d1917fd958ccbf0fb1bd6878b1d75b/8435e5dde71190ef03c9aa12c61b9d16fcfa60c8.jpg"/>
+    <br/>
+    <button id="btn_clicks">测试单双击事件</button><br/>
+    输入<input id="input_key"/> <div id="div_key"></div>
+</body>
+
+</html>
