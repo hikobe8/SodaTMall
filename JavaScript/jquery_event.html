@@ -39,6 +39,24 @@
             $.each(tmpArr, function(i, v) {
                 console.log('数组 [' + i + '] = ' + v);
             });
+
+            //unique 去重，注意必须要先对数组进行排序,使用sort方法
+            var tmpArr2 = new Array(5,2,4,2,3,3,1,4,2,5);
+            //5,2,4,2,3,3,1,4,2,5,-5,0,88 错误????,只能去重10个元素
+            tmpArr2.sort();
+            $.unique(tmpArr2);
+            console.log('排序之后使用unique方法的结果' + tmpArr2);
+
+            var tmpArr3 = new Array(5,2,4,2,3,3,1,4,2,5,1,20,100,58);
+            //inArray -1 表示不在当前数组中，整数为索引值
+            console.log($.inArray(101, tmpArr3));
+            console.log($.inArray(5, tmpArr3));
+            console.log($.inArray(58, tmpArr3));
+
+            var json1 = "{\"name\":\"Kobe\", \"number\":";
+            var json2 = "\"24\"}";
+            var obj = $.parseJSON(json1 + json2);
+            $('#div_json').html(JSON.stringify(obj));
         });
 
     </script>
@@ -59,7 +77,7 @@
 
     请输入<input id="input_name" /> <span id="span_result"></span>
 
-    <div></div>
+    <div id="div_json"></div>
 </body>
 
 </html>
