@@ -34,8 +34,11 @@
                         $('#span_result').html(result);
                     }
                 });
-            }
-            );
+            });
+            var tmpArr = new Array(1,2,3,4,5);
+            $.each(tmpArr, function(i, v) {
+                console.log('数组 [' + i + '] = ' + v);
+            });
         });
 
     </script>
@@ -55,6 +58,8 @@
     <div id="div_key"></div>
 
     请输入<input id="input_name" /> <span id="span_result"></span>
+
+    <div></div>
 </body>
 
 </html>
