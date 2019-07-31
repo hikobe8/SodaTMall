@@ -4,11 +4,44 @@
     <meta charset="UTF-8">
     <title>Vue练习</title>
     <script src="./vue.js"></script>
+    <style>
+        .red {
+            background-color: red
+        }
+
+        .green {
+            background-color: green
+        }
+
+        .blue {
+            background-color: blue
+        }
+
+        .yellow {
+            background-color: yellow
+        }
+    </style>
 </head>
 
 <body>
     <div id="div1">
         {{message.name}}
+    </div>
+    <div>
+        <button id="btn_click_count" v-on:click='count'>点击了{{clickCount}}次</span>
+    </div>
+    <h1>点击事件冒泡</h1>
+    <div id="grandparent" class="red" v-on:click="alertName">
+        grandparent
+        <div id="parent" class="green" v-on:click="alertName">
+            parent
+            <div id="me" class="blue" v-on:click.stop="alertName">
+                me
+                <div id="son" class="yellow" v-on:click="alertName">
+                    son
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
@@ -16,6 +49,29 @@
             el: '#div1',
             data: {
                 message: kobe
+            }
+        });
+        new Vue({
+            el: '#btn_click_count',
+            data: {
+                clickCount: 0
+            },
+            methods: {
+                count: function () {
+                    this.clickCount++;
+                }
+            }
+        });
+        new Vue({
+            el: '#grandparent',
+            data: {
+                id: ''
+            },
+            methods: {
+                alertName: function () {
+                    this.id = event.currentTarget.id;
+                    alert(this.id)
+                }
             }
         });
     </script>
