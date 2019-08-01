@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue练习</title>
+    <script src="./jquery-3.4.1.js"></script>
+    <link href="./bootstrap.css" rel="stylesheet">
+    <script src="./bootstrap.js"></script>
     <script src="./vue.js"></script>
     <style>
         .red {
@@ -43,6 +46,14 @@
             </div>
         </div>
     </div>
+    <div id="div_if">
+        <button v-on:click="lottery" class="btn btn-info">点击抽奖</button>
+        <div v-if="number>80">兰博基尼</div>
+        <div v-else-if="number>60">豪华别墅</div>
+        <div v-else-if="number>40">自行车</div>
+        <div v-else-if="number>20">微信红包5元</div>
+        <div v-else>谢谢惠顾</div>
+    </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
         new Vue({
@@ -71,6 +82,17 @@
                 alertName: function () {
                     this.id = event.currentTarget.id;
                     alert(this.id)
+                }
+            }
+        });
+        new Vue({
+            el: '#div_if',
+            data: {
+                number: 0
+            },
+            methods: {
+                lottery: function lottery() {
+                    this.number = Math.random() * 100;
                 }
             }
         });
