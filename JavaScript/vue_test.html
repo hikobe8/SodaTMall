@@ -54,6 +54,18 @@
         <div v-else-if="number>20">微信红包5元</div>
         <div v-else>谢谢惠顾</div>
     </div>
+    <div id="div_for">
+        <table border="1" style="width: 200px" align="center">
+            <tr style="background-color: darkgray">
+                <td style="width: 50%; text-align: center">name</td>
+                <td style="text-align: center">number</td>
+            </tr>
+            <tr v-for="player in players">
+                <td style="text-align: center">{{player.name}}</td>
+                <td style="text-align: center">{{player.numer}}</td>
+            </tr>
+        </table>
+    </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
         new Vue({
@@ -94,6 +106,17 @@
                 lottery: function lottery() {
                     this.number = Math.random() * 100;
                 }
+            }
+        });
+        var players = [
+            { name: 'Kobe', numer: '24' },
+            { name: 'James', numer: '23' },
+            { name: 'Jordan', numer: '23' }
+        ];
+        new Vue({
+            el: '#div_for',
+            data: {
+                players: players
             }
         });
     </script>
