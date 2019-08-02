@@ -66,6 +66,9 @@
             </tr>
         </table>
     </div>
+    <div id="div_href">
+        <a v-bind:href="page">百度</a>
+    </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
         new Vue({
@@ -117,6 +120,12 @@
             el: '#div_for',
             data: {
                 players: players
+            }
+        });
+        new Vue({
+            el: '#div_href',
+            data: {
+                page: 'http://baidu.com'
             }
         });
     </script>
