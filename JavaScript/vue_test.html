@@ -69,6 +69,10 @@
     <div id="div_href">
         <a v-bind:href="page">百度</a>
     </div>
+    <div id="div_double_bind">
+        得分数 : <input v-model="score"/>
+        <button @click="doClick">提交数据</button>
+    </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
         new Vue({
@@ -126,6 +130,17 @@
             el: '#div_href',
             data: {
                 page: 'http://baidu.com'
+            }
+        });
+        new Vue({
+            el: "#div_double_bind",
+            data:{
+                score: 0
+            },
+            methods: {
+                doClick: function(){
+                    alert(this.score);
+                }
             }
         });
     </script>
