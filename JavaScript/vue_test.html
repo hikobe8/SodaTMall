@@ -70,8 +70,26 @@
         <a v-bind:href="page">百度</a>
     </div>
     <div id="div_double_bind">
-        得分数 : <input v-model="score"/>
+        得分数 : <input v-model="score" />
         <button @click="doClick">提交数据</button>
+    </div>
+    <h2>computed 和 methods 的区别</h2>
+    computed 是有缓存的，只要rmb没有变化，dollar 会直接返回以前计算出来的值，而不会再次计算。 这样如果是复杂计算，就会节约不少时间。
+    而methods每次都会调用
+    <div id="div_calc">
+        <table border="1" >
+            <tr style="background-color: darkgray">
+            <td style="width:50%; text-align: center">人民币</td>
+            <td style="width:50%; text-align: center">美元</td>
+            </tr>
+            <tr>
+                <td style="text-align: center" colspan="2">汇率: <input type="number" v-model.number="exchange"/></td>
+            </tr>
+            <tr>
+                <td>￥: <input type="number" v-model.number="rmb"/></td>
+                <td>$: <span>{{dollar}}</span></td>
+            </tr>
+        </table>
     </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
@@ -134,12 +152,24 @@
         });
         new Vue({
             el: "#div_double_bind",
-            data:{
+            data: {
                 score: 0
             },
             methods: {
-                doClick: function(){
+                doClick: function () {
                     alert(this.score);
+                }
+            }
+        });
+        new Vue({
+            el: "#div_calc",
+            data: {
+                rmb: 0,
+                exchange:7.0
+            },
+            computed: {
+                dollar: function(){
+                    return this.rmb / this.exchange;
                 }
             }
         });
