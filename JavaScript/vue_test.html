@@ -23,6 +23,14 @@
         .yellow {
             background-color: yellow
         }
+
+        div.product {
+            border: 1px solid gray;
+            width: 200px;
+            margin: 10px;
+            float: left;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -92,9 +100,7 @@
         </table>
     </div>
     <div id="div_components">
-        <product></product>
-        <product></product>
-        <product></product>
+        <product v-for="item in products" v-bind:product="item"></product>
     </div>
     <script>
         var kobe = { "name": "Kobe", "number": "24" };
@@ -178,11 +184,25 @@
                 }
             }
         });
+
         new Vue({
             el: "#div_components",
-            components:{
-                'product':{
-                    template: '<div class="product">Xiaomi/小米Redmi红米Note7大屏智能指纹手机9官方旗舰k20正品学生note7pro</div>'
+            data: {
+                products: [
+                    { "name": "MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮", "sale": "18" },
+                    { "name": "宾度 男士手包真皮大容量手拿包牛皮个性潮男包手抓包软皮信封包", "sale": "35" },
+                    { "name": "唯美诺新款男士手包男包真皮大容量小羊皮手拿包信封包软皮夹包潮", "sale": "29" }
+                ]
+            },
+            components: {
+                'product': {
+                    props: ['product'],
+                    template: '<div class="product" v-on:click="increaseNumber">{{product.name}} <br/> 销量:{{product.sale}}</div>',
+                    methods: {
+                        increaseNumber: function () {
+                            this.product.sale++;
+                        }
+                    }
                 }
             }
         });
