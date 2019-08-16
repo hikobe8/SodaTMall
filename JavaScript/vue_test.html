@@ -6,7 +6,8 @@
     <script src="./jquery-3.4.1.js"></script>
     <link href="./bootstrap.css" rel="stylesheet">
     <script src="./bootstrap.js"></script>
-    <script src="./vue.js"></script>
+    <script src="./vue.js"></script>    
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>    
     <style>
         .red {
             background-color: red
@@ -218,6 +219,60 @@
             });
         new Vue({
             el: "#red_china"
+        });
+    </script>
+
+    <h1>路由</h1>
+    <style>
+        div.tabs{
+            border: 1px solid black;
+            float: left;
+            text-align: center
+        }
+        div.tabs a{
+            display: block;
+            text-decoration: none
+        }
+
+        a.router-link-active{
+            background-color: lightgray
+        }
+
+        div.content{
+            float: left;
+            margin-left: 20px
+        }
+    </style>
+    <div id="app" style="margin: 20px">
+
+        <div class="tabs">
+            <router-link to='/user'>个人中心</router-link>
+            <router-link to='/post'>朋友圈</router-link>
+            <router-link to='/msg'>消息</router-link>
+        </div>
+
+        <div class="content">
+            <router-view></router-view>
+        </div>
+
+    </div>
+
+    <script>
+        var user = {template: '<p>个人中心页面</p>'};
+        var post = {template: '<p>朋友圈页面</p>'};
+        var msg = {template: '<p>消息页面</p>'};
+        var routes = [
+            {path: '/', redirect: '/user'},
+            {path: '/user', component: user},
+            {path: '/post', component: post},
+            {path: '/msg', component: msg}
+        ];
+        var router = new VueRouter({
+            routes: routes
+        });
+        new Vue({
+            el: "#app",
+            router
         });
     </script>
 </body>
