@@ -207,6 +207,19 @@
             }
         });
     </script>
+    <div id="red_china" style="clear: both;">
+        <span v-red_text="{color:'red', text:'red'}">I love China!!!</span>
+    </div>
+    <script>
+        Vue.directive(
+            ('red_text'), function (el, binding) {
+                el.innerHtml = el.innerHtml + binding.value.text;
+                el.style.color = binding.value.color;
+            });
+        new Vue({
+            el: "#red_china"
+        });
+    </script>
 </body>
 
 </html>
