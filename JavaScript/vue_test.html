@@ -5,6 +5,7 @@
     <title>Vue练习</title>
     <script src="./jquery-3.4.1.js"></script>
     <script src="http://how2j.cn/study/fetch.min.js"></script>
+    <script src="http://how2j.cn/study/axios.min.js"></script>
     <link href="./bootstrap.css" rel="stylesheet">
     <script src="./bootstrap.js"></script>
     <script src="./vue.js"></script>
@@ -296,6 +297,22 @@
             console.log("Fetch错误:" + err);
         }
     </script>
+      <div style="clear: both">
+            <h1>axios.js</h1>
+            <div id="axios_result"></div>
+        </div>
+    
+        <script>
+            var url = "http://static.how2j.cn/study/json.txt";
+            try {
+                axios.get(url).then(function (response) {
+                    var result = JSON.stringify(response.data);
+                    document.getElementById('axios_result').innerHTML = "axios.get 的数据" + result;
+                });
+            } catch (err) {
+                console.log("axios.get错误:" + err);
+            }
+        </script>
 </body>
 
 </html>
