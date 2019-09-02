@@ -17,9 +17,13 @@ public class LoginServlet extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        System.out.println("用户名: " + name);
-        System.out.println("密  码: " + password);
-        resp.getWriter().println("<h1>用户名:"+ name +"<br/> 密码:"+ password +"</h1>");
+        StringBuilder responseBuilder = new StringBuilder();
+        if ("admin".equals(name) && "123".equals(password)) {
+            responseBuilder.append("<h1 style='color:green'>").append(name).append(", 你好").append("</h1>");
+        } else {
+            responseBuilder.append("<h1 style='color:red'>").append("用户名或密码错误!").append("</h1>");
+        }
+        resp.getWriter().println(responseBuilder.toString());
     }
 
 }
