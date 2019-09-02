@@ -20,4 +20,15 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LifecycleServlet</servlet-name>
+        <servlet-class>LifecycleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LifecycleServlet</servlet-name>
+        <url-pattern>/lifecycle</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
