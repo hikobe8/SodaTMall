@@ -41,9 +41,9 @@ public class UploadPhotoServlet extends HttpServlet {
                 FileItem item = (FileItem) iterator.next();
                 if (!item.isFormField()) {
                     if (fileName.length() < 1) {
-                        fileName = String.valueOf(System.currentTimeMillis());
+                        fileName = String.valueOf(System.currentTimeMillis())+".jpg";
                     }
-                    File uploadFile = new File(uploadDir, fileName+".jpg");
+                    File uploadFile = new File(uploadDir, fileName);
                     FileOutputStream fos = new FileOutputStream(uploadFile);
                     InputStream inputStream = item.getInputStream();
                     byte[] buffer = new byte[1024 * 1024];
