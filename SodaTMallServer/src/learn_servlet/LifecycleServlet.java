@@ -1,3 +1,5 @@
+package learn_servlet;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ public class LifecycleServlet extends HttpServlet {
      * 只会执行一次，也说明servlet是单例的
      */
     public LifecycleServlet() {
-        System.out.println("LifecycleServlet()");
+        System.out.println("learn_servlet.LifecycleServlet()");
     }
 
     /**
