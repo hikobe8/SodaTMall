@@ -32,15 +32,27 @@ public class HeroDao {
         return 0;
     }
 
-    public void addPlayer(HeroBean heroBean) {
-
+    public void add(HeroBean heroBean) {
+        String sql = "insert into hero values(null, ?, ?, ?)";
+        try (Connection connection = getConnection(); PreparedStatement pt = connection.prepareStatement(sql);) {
+            pt.setString(1, heroBean.name);
+            pt.setFloat(2, heroBean.hp);
+            pt.setInt(3, heroBean.damage);
+            pt.execute();
+            ResultSet resultSet = pt.getGeneratedKeys();
+            if (resultSet.next()) {
+                heroBean.id = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void delete(int id) {
 
     }
 
-    public void updatePlayer(HeroBean heroBean) {
+    public void update(HeroBean heroBean) {
 
 
     }
@@ -53,10 +65,10 @@ public class HeroDao {
         List<HeroBean> heros = new ArrayList<HeroBean>();
         String sql = "select * from hero order by id desc limit ?,? ";
         try (Connection connection = getConnection(); PreparedStatement pt = connection.prepareStatement(sql);) {
-            pt.setInt(1,startIndex);
+            pt.setInt(1, startIndex);
             pt.setInt(2, count);
             ResultSet resultSet = pt.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 HeroBean heroBean = new HeroBean();
                 heroBean.id = resultSet.getInt(1);
                 heroBean.name = resultSet.getString(2);

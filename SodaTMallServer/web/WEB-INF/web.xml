@@ -50,4 +50,14 @@
         <url-pattern>/hero</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>learn_servlet.AddHeroServlet</servlet-name>
+        <servlet-class>learn_servlet.AddHeroServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>learn_servlet.AddHeroServlet</servlet-name>
+        <url-pattern>/addHero</url-pattern>
+    </servlet-mapping>
+
 </web-app>

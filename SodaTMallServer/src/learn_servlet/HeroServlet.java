@@ -23,6 +23,7 @@ public class HeroServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         List<HeroBean> list = new HeroDao().list();
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<a href='addHero.html' style='position:fixed; left:20px, top:20px'>增加英雄</a>");
         stringBuilder.append("<table align='center' border='1' cellspacing='0'>");
         stringBuilder.append("<tr><td>id</td><td>英雄名称</td><td>血量</td><td>伤害值</td></tr>");
         for (HeroBean heroBean : list) {
