@@ -70,4 +70,24 @@
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>learn_servlet.UpdateHeroServlet</servlet-name>
+        <servlet-class>learn_servlet.UpdateHeroServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>learn_servlet.UpdateHeroServlet</servlet-name>
+        <url-pattern>/updateHero</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>learn_servlet.EditHeroServlet</servlet-name>
+        <servlet-class>learn_servlet.EditHeroServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>learn_servlet.EditHeroServlet</servlet-name>
+        <url-pattern>/editHero</url-pattern>
+    </servlet-mapping>
+
 </web-app>

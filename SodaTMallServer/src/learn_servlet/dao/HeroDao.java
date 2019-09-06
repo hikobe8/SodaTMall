@@ -59,8 +59,35 @@ public class HeroDao {
     }
 
     public void update(HeroBean heroBean) {
+        String sql = "update hero set name = ?, hp = ?, damage = ? where id = ?";
+        try (Connection connection = getConnection(); PreparedStatement pt = connection.prepareStatement(sql);) {
+            pt.setString(1, heroBean.name);
+            pt.setFloat(2, heroBean.hp);
+            pt.setInt(3, heroBean.damage);
+            pt.setInt(4, heroBean.id);
+            pt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-
+    public HeroBean get(int id){
+        HeroBean heroBean = null;
+        String sql = "SELECT * FROM hero WHERE id = ?";
+        try (Connection connection = getConnection(); PreparedStatement pt = connection.prepareStatement(sql);) {
+            pt.setInt(1, id);
+            ResultSet resultSet = pt.executeQuery();
+            if (resultSet.next()) {
+                heroBean = new HeroBean();
+                heroBean.id = resultSet.getInt(1);
+                heroBean.name = resultSet.getString(2);
+                heroBean.hp = resultSet.getFloat(3);
+                heroBean.damage = resultSet.getInt(4);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return heroBean;
     }
 
     public List<HeroBean> list() {
