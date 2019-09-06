@@ -60,4 +60,14 @@
         <url-pattern>/addHero</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>learn_servlet.DeleteServlet</servlet-name>
+        <servlet-class>learn_servlet.DeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>learn_servlet.DeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
 </web-app>

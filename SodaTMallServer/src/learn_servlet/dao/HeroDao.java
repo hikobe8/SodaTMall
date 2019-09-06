@@ -49,7 +49,13 @@ public class HeroDao {
     }
 
     public void delete(int id) {
-
+        String sql = "delete from hero where id = ?";
+        try (Connection connection = getConnection(); PreparedStatement pt = connection.prepareStatement(sql);) {
+            pt.setInt(1, id);
+            pt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void update(HeroBean heroBean) {

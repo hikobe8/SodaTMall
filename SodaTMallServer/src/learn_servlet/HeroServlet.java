@@ -25,9 +25,9 @@ public class HeroServlet extends HttpServlet {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("<a href='addHero.html' style='position:fixed; left:20px, top:20px'>增加英雄</a>");
         stringBuilder.append("<table align='center' border='1' cellspacing='0'>");
-        stringBuilder.append("<tr><td>id</td><td>英雄名称</td><td>血量</td><td>伤害值</td></tr>");
+        stringBuilder.append("<tr><td>id</td><td>英雄名称</td><td>血量</td><td>伤害值</td><td>操作</td></tr>");
         for (HeroBean heroBean : list) {
-            String tr = "<tr><td>%d</td><td>%s</td><td>%f</td><td>%d</td></tr>";
+            String tr = "<tr><td>%d</td><td>%s</td><td>%f</td><td>%d</td><td><a href>更新</a>/<a href='delete?id="+ heroBean.id +"'>删除</a></td></tr>";
             String format = String.format(tr, heroBean.id, heroBean.name, heroBean.hp, heroBean.damage);
             stringBuilder.append(format);
         }
