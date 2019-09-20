@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,16 +23,18 @@ public class HeroServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         List<HeroBean> list = new HeroDao().list();
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("<a href='addHero.html' style='position:fixed; left:20px, top:20px'>增加英雄</a>");
-        stringBuilder.append("<table align='center' border='1' cellspacing='0'>");
-        stringBuilder.append("<tr><td>id</td><td>英雄名称</td><td>血量</td><td>伤害值</td><td>操作</td></tr>");
-        for (HeroBean heroBean : list) {
-            String tr = "<tr><td>%d</td><td>%s</td><td>%f</td><td>%d</td><td><a href='editHero?id="+ heroBean.id +"'>编辑</a>/<a href='delete?id="+ heroBean.id +"'>删除</a></td></tr>";
-            String format = String.format(tr, heroBean.id, heroBean.name, heroBean.hp, heroBean.damage);
-            stringBuilder.append(format);
-        }
-        stringBuilder.append("</table>");
-        resp.getWriter().println(stringBuilder.toString());
+        req.setAttribute("heros", list);
+        req.getRequestDispatcher("heroList.jsp").forward(req, resp);
+//        StringBuilder stringBuilder = new StringBuilder();
+//        stringBuilder.append("<a href='addHero.html' style='position:fixed; left:20px, top:20px'>增加英雄</a>");
+//        stringBuilder.append("<table align='center' border='1' cellspacing='0'>");
+//        stringBuilder.append("<tr><td>id</td><td>英雄名称</td><td>血量</td><td>伤害值</td><td>操作</td></tr>");
+//        for (HeroBean heroBean : list) {
+//            String tr = "<tr><td>%d</td><td>%s</td><td>%f</td><td>%d</td><td><a href='editHero?id="+ heroBean.id +"'>编辑</a>/<a href='delete?id="+ heroBean.id +"'>删除</a></td></tr>";
+//            String format = String.format(tr, heroBean.id, heroBean.name, heroBean.hp, heroBean.damage);
+//            stringBuilder.append(format);
+//        }
+//        stringBuilder.append("</table>");
+//        resp.getWriter().println(stringBuilder.toString());
     }
 }
