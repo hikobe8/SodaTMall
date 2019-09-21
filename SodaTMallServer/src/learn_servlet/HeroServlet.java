@@ -21,20 +21,31 @@ public class HeroServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=utf-8");
-        List<HeroBean> list = new HeroDao().list();
+
+        int start = 0;
+        int count = 5;
+        try {
+            start = Integer.parseInt(req.getParameter("start"));
+        } catch (Exception e) {
+
+        }
+        HeroDao heroDao = new HeroDao();
+        List<HeroBean> list = heroDao.list(start, 5);
+        int total = heroDao.getCount();
+        int last = 0;
+        if (total % count == 0) {
+            last = total - count;
+        } else {
+            last = total - total % count;
+        }
+        int next = start + count;
+        next = next > last ? last : next;
+        int pre = start - count;
+        pre = pre < 0 ? 0 : pre;
+        req.setAttribute("pre", pre);
+        req.setAttribute("next", next);
+        req.setAttribute("last", last);
         req.setAttribute("heros", list);
         req.getRequestDispatcher("heroList.jsp").forward(req, resp);
-//        StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append("<a href='addHero.html' style='position:fixed; left:20px, top:20px'>增加英雄</a>");
-//        stringBuilder.append("<table align='center' border='1' cellspacing='0'>");
-//        stringBuilder.append("<tr><td>id</td><td>英雄名称</td><td>血量</td><td>伤害值</td><td>操作</td></tr>");
-//        for (HeroBean heroBean : list) {
-//            String tr = "<tr><td>%d</td><td>%s</td><td>%f</td><td>%d</td><td><a href='editHero?id="+ heroBean.id +"'>编辑</a>/<a href='delete?id="+ heroBean.id +"'>删除</a></td></tr>";
-//            String format = String.format(tr, heroBean.id, heroBean.name, heroBean.hp, heroBean.damage);
-//            stringBuilder.append(format);
-//        }
-//        stringBuilder.append("</table>");
-//        resp.getWriter().println(stringBuilder.toString());
     }
 }

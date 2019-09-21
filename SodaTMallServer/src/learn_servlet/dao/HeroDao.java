@@ -29,7 +29,17 @@ public class HeroDao {
     }
 
     public int getCount() {
-        return 0;
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM hero";
+        try (Connection connection = getConnection(); PreparedStatement pt = connection.prepareStatement(sql);) {
+            ResultSet resultSet = pt.executeQuery();
+            if (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
     public void add(HeroBean heroBean) {
