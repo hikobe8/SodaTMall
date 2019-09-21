@@ -23,10 +23,11 @@ public class LoginServlet extends HttpServlet {
             //服务端跳转
 //            req.getRequestDispatcher("success.html").forward(req, resp);
             //客户端跳转
-            resp.sendRedirect("success.html");
+            req.getSession().setAttribute("user", "admin");
+            resp.sendRedirect("hero");
         } else {
 //            req.getRequestDispatcher("failure.html").forward(req, resp);
-            resp.sendRedirect("failure.html");
+            resp.sendRedirect("login.html");
         }
 
     }

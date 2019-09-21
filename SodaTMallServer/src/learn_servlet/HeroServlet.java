@@ -22,11 +22,16 @@ public class HeroServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        if (req.getSession().getAttribute("user") == null) {
+            resp.sendRedirect("login.html");
+            return;
+        }
+
         int start = 0;
         int count = 5;
         try {
             start = Integer.parseInt(req.getParameter("start"));
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         HeroDao heroDao = new HeroDao();
