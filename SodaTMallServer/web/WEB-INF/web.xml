@@ -95,6 +95,16 @@
         <url-pattern>/editHero</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>learn_servlet.cart.ProductListServlet</servlet-name>
+        <servlet-class>learn_servlet.cart.ProductListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>learn_servlet.cart.ProductListServlet</servlet-name>
+        <url-pattern>/listProduct</url-pattern>
+    </servlet-mapping>
+
     <!--    filter-->
     <filter>
         <filter-name>learn_servlet.filter.FirstFilter</filter-name>

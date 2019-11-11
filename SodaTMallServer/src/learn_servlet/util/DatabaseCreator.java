@@ -13,17 +13,26 @@ import java.sql.Statement;
  */
 public class DatabaseCreator {
 
-    public static String DB_URL = "jdbc:mysql://127.0.0.1:3306/";
-    public static String DB_NAME = "how2java";
-    public static String DB_USER = "root";
-    public static String DB_PWD = "root";
-    public static String CREATE_HERO_TABLE = "CREATE TABLE IF NOT EXISTS hero (" +
+    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/";
+    public static String DB_NAME_HOW2JAVA = "how2java";
+    private static String DB_USER = "root";
+    private static String DB_PWD = "root";
+    private static String CREATE_HERO_TABLE = "CREATE TABLE IF NOT EXISTS hero (" +
             "  id int(11) AUTO_INCREMENT," +
             "  name varchar(30) ," +
             "  hp float ," +
             "  damage int(11) ," +
             "  PRIMARY KEY (id)" +
             ")  DEFAULT CHARSET=utf8;";
+
+    private static String DB_NAME_CART = "cart";
+
+    private static String CREATE_PRODUCT_TABLE = "CREATE TABLE IF NOT EXISTS `product` (" +
+            "  `id` int(11) DEFAULT NULL," +
+            "  `name` varchar(50) DEFAULT NULL," +
+            "  `price` float DEFAULT NULL" +
+            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
 
     static {
         try {
@@ -35,27 +44,47 @@ public class DatabaseCreator {
 
     public static void main(String[] args) {
 
+//        createHeroDataBase();
+        createCartDataBase();
+    }
+
+    private static void createCartDataBase() {
+        createDataBase(DB_NAME_CART);
+        createTable(DB_NAME_CART, CREATE_PRODUCT_TABLE);
+    }
+
+    private static void createHeroDataBase() {
+        createDataBase(DB_NAME_HOW2JAVA);
+        createTable(DB_NAME_HOW2JAVA, CREATE_HERO_TABLE);
+    }
+
+    private static void createDataBase(String dbName) {
         try (
                 Connection connection = DriverManager.getConnection(DB_URL, DB_USER,
                         DB_PWD);
                 Statement stat = connection.createStatement();
         ) {
-            System.out.println("创建数据库" + DB_NAME);
-            stat.execute("CREATE DATABASE IF NOT EXISTS " + DB_NAME);
-            System.out.println("创建数据库" + DB_NAME + "成功!");
-            stat.close();
-            connection.close();
-            try (Connection conn = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER,
-                    DB_PWD);
-                 Statement st = conn.createStatement();) {
-                System.out.println("创建数据表 hero");
-                st.execute(CREATE_HERO_TABLE);
-                System.out.println("创建数据表 hero 成功");
-            }
+            System.out.println("创建数据库" + dbName);
+            stat.execute("CREATE DATABASE IF NOT EXISTS " + dbName);
+            System.out.println("创建数据库" + dbName + "成功!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    private static void createTable(String dbName, String tableSql) {
+        try (
+                Connection connection = DriverManager.getConnection(DB_URL + dbName, DB_USER,
+                        DB_PWD);
+                Statement stat = connection.createStatement();
+        ) {
+            Statement st = connection.createStatement();
+            System.out.println("创建数据表..");
+            st.execute(tableSql);
+            System.out.println("创建数据表成功");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
